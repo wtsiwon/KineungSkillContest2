@@ -33,6 +33,11 @@ public class Bullet : MonoBehaviour
         this.dmg = dmg;
     }
 
+    private void DestroyBullet()
+    {
+
+    }
+
 
 
 }
