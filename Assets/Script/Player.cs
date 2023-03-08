@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    private float moveSpd;
     void Start()
     {
         
@@ -12,7 +11,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        MovingRocket();
     }
 
 
@@ -22,8 +21,16 @@ public class Player : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector3(x, y, 0) * moveSpd * Time.deltaTime);
-
-
-
     }
+
+    private IEnumerator IShoot()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Bullet bullet1 = Instantiate(bullet, transform.position, Quaternion.identity);
+            bullet1.SetBullet(transform.position, new Vector3(0, 0, 180), bulletSpd, atkDmg);
+        }
+    }
+
 }

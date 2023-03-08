@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [SerializeField]
     protected float maxHp;
@@ -28,9 +28,11 @@ public class Entity : MonoBehaviour
     protected float moveSpd;
     [SerializeField]
     protected float atkSpd;
+    [SerializeField]
+    protected float atkDmg;
 
     [SerializeField]
-    protected GameObject bullet;
+    protected Bullet bullet;
 
     void Start()
     {
