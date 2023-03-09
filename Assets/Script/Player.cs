@@ -44,12 +44,11 @@ public class Player : Entity
     private Vector3 ClampPosition()
     {
         Vector3 vector3 = new Vector3();
-        vector3.x = Mathf.Clamp(vector3.x, -clampPosition.x, clampPosition.x);
-        vector3.y = Mathf.Clamp(vector3.y, -clampPosition.y, clampPosition.y);
+        vector3.x = Mathf.Clamp(transform.position.x, -clampPosition.x, clampPosition.x);
+        vector3.y = Mathf.Clamp(transform.position.y, -clampPosition.y, clampPosition.y);
         vector3.z = 0;
 
         return vector3;
-
     }
     
 
