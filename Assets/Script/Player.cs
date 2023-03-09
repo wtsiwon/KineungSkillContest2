@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class Player : Entity
 {
+    public Vector3 clampPosition = new Vector3();
     void Start()
     {
         StartCoroutine(IShoot());
@@ -12,7 +13,9 @@ public class Player : Entity
 
     void Update()
     {
+
         MovingRocket();
+        transform.position = ClampPosition();
     }
 
 
@@ -37,5 +40,17 @@ public class Player : Entity
             }
         }
     }
+
+    private Vector3 ClampPosition()
+    {
+        Vector3 vector3 = new Vector3();
+        vector3.x = Mathf.Clamp(vector3.x, -clampPosition.x, clampPosition.x);
+        vector3.y = Mathf.Clamp(vector3.y, -clampPosition.y, clampPosition.y);
+        vector3.z = 0;
+
+        return vector3;
+
+    }
+    
 
 }
